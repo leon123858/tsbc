@@ -28,6 +28,8 @@
 	},
 	"dependencies": {
 		"crypto-js": "^4.1.1",
-		"merkletreejs": "^0.2.32"
+		"merkletreejs": "^0.2.32",
+		"redis": "^4.2.0",
+		"uuid": "^8.3.2"
 	}
 }
