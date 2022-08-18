@@ -1,5 +1,9 @@
 import { connectRedis, disconnectRedis } from './initRedis';
-import { Transaction } from '../../types/blockchain';
+import {
+	Transaction,
+	TransactionOutput,
+	TransactionInput,
+} from '../../types/blockchain';
 import { v4 as uid } from 'uuid';
 import { RedisClientType } from 'redis';
 /**
@@ -33,16 +37,4 @@ export const getUnConfirmTransaction = async (transactionId: string) => {
 		return JSON.parse(result[0] as string) as Transaction;
 	}
 	throw 'not exist transaction';
-};
-/**
- * 更新公鑰所擁有資產
- * @param publicKey
- * @param value
- * @returns 當前資產
- */
-export const updateUserStatus = async (publicKey: string, value: number) => {
-	const cacheClient = (await connectRedis()) as RedisClientType;
-	const keyValue = await cacheClient.incrBy(`publicKey-${publicKey}`, value);
-	await disconnectRedis(cacheClient);
-	return keyValue;
 };
