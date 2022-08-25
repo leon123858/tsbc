@@ -4,14 +4,16 @@ import { Hash } from './utils';
  */
 export interface TransactionInput {
 	transactionId: string;
-	outputIndex: number;
+	publicKey: string;
+	unSpendTransactionOutputId: string;
 	scriptResult: string;
-	lockTime: number;
 }
 /**
  * 交易輸出
  */
 export interface TransactionOutput {
+	transactionId: string;
+	publicKey: string;
 	value: number;
 	unLockScript: string;
 }
